@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handog Kaalaman 2526B</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E4C1;
+            --gold-dark: #B8960F;
+            --amber: #FFBF00;
+            --honey: #FDB931;
+            --cream: #FFF8DC;
+            --charcoal: #2C2416;
+            --warm-black: #1A1510;
+            --text-primary: #2C2416;
+            --text-secondary: #5C4D2C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFFEF8 50%, #FFFCF0 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(255, 215, 0, 0.03) 0%, transparent 25%),
+                radial-gradient(circle at 85% 25%, rgba(255, 200, 50, 0.02) 0%, transparent 25%),
+                radial-gradient(circle at 50% 70%, rgba(255, 215, 0, 0.03) 0%, transparent 30%),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(212, 175, 55, 0.01) 2px, rgba(212, 175, 55, 0.01) 4px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            padding: 4rem 0 2rem;
+            text-align: left;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--amber));
+            margin: 2rem 0;
+            animation: expandWidth 1.2s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 80px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInBottom {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            margin-bottom: 6rem;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            margin-bottom: 3rem;
+            text-align: center;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 2px;
+            background: var(--amber);
+        }
+
+        .main-title {
+            font-size: 5.5rem;
+            line-height: 0.9;
+            margin-bottom: 0;
+            text-align: left;
+            display: block;
+            width: auto;
+            color: var(--charcoal);
+        }
+
+        .main-title::before {
+            display: none;
+        }
+
+        .point-persons-title {
+            text-align: left;
+            color: var(--charcoal);
+        }
+
+        .point-persons-title::before {
+            left: 0;
+            transform: none;
+        }
+
+        .title-line-2 {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .title-number {
+            font-size: 9rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: var(--gold-dark);
+            line-height: 0.9;
+            margin-left: 0;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .image-card {
+            position: relative;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation-duration: 0.8s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: both;
+            width: 100%;
+        }
+
+        .image-card:nth-child(odd) {
+            animation-name: slideInLeft;
+        }
+
+        .image-card:nth-child(even) {
+            animation-name: slideInRight;
+        }
+
+        .image-card:nth-child(1) { animation-delay: 0.1s; }
+        .image-card:nth-child(2) { animation-delay: 0.25s; }
+        .image-card:nth-child(3) { animation-delay: 0.4s; }
+        .image-card:nth-child(4) { animation-delay: 0.55s; }
+        .image-card:nth-child(5) { animation-delay: 0.7s; }
+        .image-card:nth-child(6) { animation-delay: 0.85s; }
+
+        .image-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.25);
+        }
+
+        .image-card::before {
+            content: '';
+            display: block;
+            padding-top: 40%;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--honey) 100%);
+        }
+
+        .image-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: var(--gold-dark);
+            text-align: center;
+            width: 80%;
+        }
+
+        /* Point Persons Section */
+        #point-persons {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.12);
+            animation: slideInBottom 0.8s ease-out;
+            animation-delay: 1s;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #point-persons::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--amber), var(--honey));
+        }
+
+        .content-block {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullet-list > li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .bullet-list > li:nth-child(1) { animation-delay: 0.5s; }
+        .bullet-list > li:nth-child(2) { animation-delay: 0.6s; }
+
+        .bullet-list > li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+        }
+
+        .nested-list {
+            list-style: none;
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .nested-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .nested-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: var(--honey);
+            border-radius: 50%;
+        }
+
+        .highlight-box {
+            background: var(--gold-light);
+            border-left: 4px solid var(--gold-primary);
+            padding: 1.5rem 2rem;
+            margin-top: 2rem;
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            animation: fadeInUp 1s ease-out;
+            animation-delay: 0.8s;
+            animation-fill-mode: both;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .main-title {
+                font-size: 3.5rem;
+            }
+
+            .title-number {
+                font-size: 5.5rem;
+            }
+
+            .image-gallery {
+                gap: 1.5rem;
+            }
+
+            #point-persons {
+                padding: 3rem 2rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .main-title {
+                font-size: 2.8rem;
+            }
+
+            .title-number {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="section-title main-title">
+                Handog<br>
+                <span class="title-line-2">
+                    <span>Kaalaman</span><span class="title-number">2526B</span>
+                </span>
+            </h1>
+        </header>
+
+        <section id="handog-kaalaman">
+            <div class="image-gallery">
+                <div class="image-card">
+                    <div class="image-placeholder">hagkan-1.jpg</div>
+                </div>
+                <div class="image-card">
+                    <div class="image-placeholder">hagkan-2.jpg</div>
+                </div>
+                <div class="image-card">
+                    <div class="image-placeholder">hagkan-3.jpg</div>
+                </div>
+                <div class="image-card">
+                    <div class="image-placeholder">hagkan-4.jpg</div>
+                </div>
+                <div class="image-card">
+                    <div class="image-placeholder">hagkan-5.jpg</div>
+                </div>
+                <div class="image-card">
+                    <div class="image-placeholder">hagkan-6.jpg</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="point-persons">
+            <div class="content-block">
+                <h2 class="section-title point-persons-title">Point Persons</h2>
+                
+                <ul class="bullet-list">
+                    <li>
+                        Point Persons are chosen/delegated members who will be included in Head-level communication channels for:
+                        <ul class="nested-list">
+                            <li>1) Faster dissemination of information</li>
+                            <li>2) Better intercommittee communication</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Point Persons will NOT have any added workload (aside from their existing member-level workload), they will simply have access to more channels
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Handog Kaalaman 2526B. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
