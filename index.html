@@ -184,7 +184,7 @@
         }
 
         .main-title {
-            font-size: 5.5rem;
+            font-size: 7.5rem;
             line-height: 0.9;
             margin-bottom: 0;
             text-align: left;
@@ -207,13 +207,36 @@
             transform: none;
         }
 
+        .description-text {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+            margin-top: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+
+        .decorative-bar {
+            height: 4px;
+            background: linear-gradient(90deg, var(--charcoal) 0%, var(--gold-dark) 50%, var(--charcoal) 100%);
+            margin: 3rem 0;
+            width: 100%;
+        }
+
+        .top-accent-bar {
+            height: 3px;
+            background: var(--gold-dark);
+            margin-bottom: 2rem;
+            width: 60%;
+        }
+
         .title-line-2 {
             display: flex;
             align-items: flex-start;
         }
 
         .title-number {
-            font-size: 9rem;
+            font-size: 5.5rem;
             font-weight: 700;
             letter-spacing: -2px;
             color: var(--gold-dark);
@@ -236,26 +259,24 @@
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation-duration: 0.8s;
-            animation-timing-function: ease-out;
-            animation-fill-mode: both;
             width: 100%;
+            opacity: 0;
         }
 
-        .image-card:nth-child(odd) {
-            animation-name: slideInLeft;
+        .image-card.animate-in:nth-child(odd) {
+            animation: slideInLeft 0.8s ease-out forwards;
         }
 
-        .image-card:nth-child(even) {
-            animation-name: slideInRight;
+        .image-card.animate-in:nth-child(even) {
+            animation: slideInRight 0.8s ease-out forwards;
         }
 
-        .image-card:nth-child(1) { animation-delay: 0.1s; }
-        .image-card:nth-child(2) { animation-delay: 0.25s; }
-        .image-card:nth-child(3) { animation-delay: 0.4s; }
-        .image-card:nth-child(4) { animation-delay: 0.55s; }
-        .image-card:nth-child(5) { animation-delay: 0.7s; }
-        .image-card:nth-child(6) { animation-delay: 0.85s; }
+        .image-card.animate-in:nth-child(1) { animation-delay: 0.1s; }
+        .image-card.animate-in:nth-child(2) { animation-delay: 0.25s; }
+        .image-card.animate-in:nth-child(3) { animation-delay: 0.4s; }
+        .image-card.animate-in:nth-child(4) { animation-delay: 0.55s; }
+        .image-card.animate-in:nth-child(5) { animation-delay: 0.7s; }
+        .image-card.animate-in:nth-child(6) { animation-delay: 0.85s; }
 
         .image-card:hover {
             transform: translateY(-8px);
@@ -283,15 +304,17 @@
 
         /* Point Persons Section */
         #point-persons {
-            background: white;
+            background: linear-gradient(135deg, #2C2416 0%, #3A3020 100%);
             padding: 4rem 3rem;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.12);
-            animation: slideInBottom 0.8s ease-out;
-            animation-delay: 1s;
-            animation-fill-mode: both;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+        }
+
+        #point-persons.animate-in {
+            animation: slideInBottom 0.8s ease-out forwards;
         }
 
         #point-persons::before {
@@ -302,6 +325,22 @@
             width: 100%;
             height: 4px;
             background: linear-gradient(90deg, var(--gold-dark), var(--amber), var(--honey));
+        }
+
+        #point-persons .section-title,
+        #point-persons .bullet-list > li,
+        #point-persons .nested-list li {
+            color: #FFFFFF;
+        }
+
+        #point-persons .nested-list li {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        #point-persons .highlight-box {
+            background: rgba(212, 175, 55, 0.15);
+            border-left: 4px solid var(--gold-primary);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .content-block {
@@ -398,11 +437,11 @@
             }
 
             .main-title {
-                font-size: 3.5rem;
+                font-size: 4.5rem;
             }
 
             .title-number {
-                font-size: 5.5rem;
+                font-size: 3.5rem;
             }
 
             .image-gallery {
@@ -424,11 +463,11 @@
             }
 
             .main-title {
-                font-size: 2.8rem;
+                font-size: 3.5rem;
             }
 
             .title-number {
-                font-size: 4rem;
+                font-size: 2.8rem;
             }
         }
     </style>
@@ -436,13 +475,19 @@
 <body>
     <div class="container">
         <header>
+            <div class="top-accent-bar"></div>
             <h1 class="section-title main-title">
                 Handog<br>
                 <span class="title-line-2">
                     <span>Kaalaman</span><span class="title-number">2526B</span>
                 </span>
             </h1>
+            <p class="description-text">
+                HagKan, UP CURSOR's flagship outreach event that aims to cultivate computer literacy and promote computer science to younger generations
+            </p>
         </header>
+
+        <div class="decorative-bar"></div>
 
         <section id="handog-kaalaman">
             <div class="image-gallery">
@@ -467,6 +512,8 @@
             </div>
         </section>
 
+        <div class="decorative-bar"></div>
+
         <section id="point-persons">
             <div class="content-block">
                 <h2 class="section-title point-persons-title">Point Persons</h2>
@@ -483,6 +530,10 @@
                         Point Persons will NOT have any added workload (aside from their existing member-level workload), they will simply have access to more channels
                     </li>
                 </ul>
+
+                <div class="highlight-box">
+                    Point Persons serve as bridges between committees, ensuring seamless information flow without additional responsibilities.
+                </div>
             </div>
         </section>
 
@@ -490,5 +541,32 @@
             <p>&copy; 2024 Handog Kaalaman 2526B. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        // Intersection Observer for scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all image cards
+        document.querySelectorAll('.image-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Observe Point Persons section
+        const pointPersonsSection = document.querySelector('#point-persons');
+        if (pointPersonsSection) {
+            observer.observe(pointPersonsSection);
+        }
+    </script>
 </body>
 </html>
